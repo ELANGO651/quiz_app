@@ -2,25 +2,29 @@ import 'package:flutter/material.dart';
 import 'package:quiz_app/style_text.dart';
 
 class StartScreen extends StatelessWidget {
-  const StartScreen({super.key});
+  const StartScreen(this.switchQuiz, {super.key});
+  final void Function() switchQuiz;
   @override
   Widget build(context) {
-    return Container(
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(colors: [
-          Color.fromARGB(255, 235, 83, 243),
-          Color.fromARGB(255, 233, 126, 245)
-        ], begin: Alignment.topLeft, end: Alignment.topRight),
-      ),
-      child: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Image.asset("assets/images/quiz-logo.png", width: 300),
-            const SizedBox(height:90),
-           OutlinedButton(onPressed: () {}, style:OutlinedButton.styleFrom(foregroundColor: Color.fromARGB(255, 99, 0, 106)), child:StyledText("click") ,),
-          ],
-        ),
+    return Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Image.asset(
+            "assets/images/quiz-logo.png",
+            width: 300,
+            color: const Color.fromARGB(124, 241, 239, 241),
+          ),
+          const SizedBox(height: 40),
+          OutlinedButton.icon(
+            onPressed: switchQuiz,
+            style: OutlinedButton.styleFrom(
+              foregroundColor: const Color.fromARGB(255, 99, 0, 106),
+            ),
+            icon: const Icon(Icons.arrow_right),
+            label: const StyledText("click"),
+          ),
+        ],
       ),
     );
   }
